@@ -13,7 +13,7 @@ const router = express.Router();
 router.route("/").get(auth, home);
 router.route("/register").post(register);
 router.route("/login").post(login);
-router.route("/admin").get(auth, role("admin"), adminsOnly);
-router.route("/dashboard").get(auth, eForEveryone);
+router.route("/admin").get(auth, role(["admin"]), adminsOnly);
+router.route("/dashboard").get(auth, role(["user", "admin"]), eForEveryone);
 
 module.exports = router;
